@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<title> Practice </title>
+<head>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="css/practice.css" />
+	<script type="text/javascript" src="jquery-1.7.2.min.js" ></script>
+	<link rel="stylesheet" type="text/css" href="src/cZoom.css" />
+	<style type="text/css">
+	body{
+		padding:0px;
+		margin:0px;
+		font-family: Verdana;
+		font-size: 12px;		
+	}
+	#zoomCanvas{		
+		border:1px solid #ccc;
+		width:600px;
+		float:left;		
+		
+	}	
+	#scale{
+		position:absolute;
+		top:0px;
+		right:0px;
+	}
+	#ApiDoc{
+		width:35%;
+		float:left;
+		padding:10px;
+	}
+	pre{
+		color: #559700;
+		font-weight: bold;
+		font-size: 12px;		
+		font-style: italic;
+	}
+	h2{
+		font-size:16px;
+		text-decoration:underline;
+	}
+	h3{
+		font-size:13px;	
+		text-decoration:underline;
+	}
+	</style>
+
+</head>
+
+
+<body>
+
+
+<div id="ApiDoc">
+<h2>Api Documentaion for CZoom </h2>
+
+<h3>Initilization</h3>
+Initilize the app like this
+<pre>
+var myZoom = new cZoom("zoomCanvas","image_name.jpg");
+</pre>
+So "zoomCanvas" is your id for the div
+</div>
+
+
+<div id="zoomCanvas"></div>
+
+<script src="src/cZoom.js" ></script>
+
+<script >
+var myZoom = new cZoom("zoomCanvas","ipad.jpg");
+//var myZoom1 = new cZoom("zoomCanvas1","ipad1.jpg");
+
+</script>
+
+</body>
+</html>
