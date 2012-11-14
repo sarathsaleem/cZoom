@@ -3,7 +3,6 @@ cZoom
 
 It is a lightweight canvas image zoom plugin with ad Annotations and Pan
 
-
 ~~~~~~~~~~~~~~#########~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~###~~~~~~~###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~###~~~~~~~~~###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,22 +17,19 @@ It is a lightweight canvas image zoom plugin with ad Annotations and Pan
 ~~~~~~~~~~~~~###########~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+
 Plublic methods:
 ~~~~~~~~~~~~~~~~
+	zoomTo();
+	getZoom();
+	resetZoom();	
 	
-	resetAll();
-	destroy();
+	getAnnotations();
+	createAnnotation();
+	deleteAnnotation();
 	
-	#zoomTo();
-	#getZoom();
-	#resetZoom();
-	
-	#panTo();
-	#getPan();
-	#resetPan();
-	
-	#createAno();
-	#removeAno();
-	#getAnos();	
+	getPan();
+	setPan();
+	resetPan();
 
 
