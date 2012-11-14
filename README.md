@@ -4,21 +4,6 @@ cZoom
 It is a lightweight canvas image zoom plugin with Annotations and Pan
 
 
-### Plublic methods ###
-```html
-	zoomTo();
-	getZoom();
-	resetZoom();
-
-	getAnnotations();
-	createAnnotation();
-	deleteAnnotation();
-
-	getPan();
-	setPan();
-	resetPan();
-```
-
 ### Usage ###
 Download the [minified library]() and include it in your html.
 
@@ -36,6 +21,20 @@ Initialize the plugin to a div elemet like
 var myZoom = new cZoom("zoomCanvas","imagename.jpg");
 
 </script>
+```
+### Plublic methods ###
+```html
+	zoomTo();
+	getZoom();
+	resetZoom();
+
+	getAnnotations();
+	createAnnotation();
+	deleteAnnotation();
+
+	getPan();
+	setPan();
+	resetPan();
 ```
 
 
