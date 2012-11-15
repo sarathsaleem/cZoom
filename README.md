@@ -24,7 +24,7 @@ var myZoom = new cZoom("zoomCanvas","imagename.jpg");
 ```
 ### Plublic methods ###
 ```html
-	zoomTo();
+	setZoom();
 	getZoom();
 	resetZoom();
 
