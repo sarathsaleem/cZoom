@@ -29,12 +29,12 @@
 		height:100%;
 	}
 	.cZ_zoomIn{
-		background:url(images/zoomIn.png) center center no-repeat;
+		background:url(images/zoomin.png) center center no-repeat;
 		height:100%;
 		border-right:1px solid #103949;
 	}
 	.cZ_zoomOut{
-		background:url(images/zoomOut.png) center center no-repeat;
+		background:url(images/zoomout.png) center center no-repeat;
 		height:100%;
 	}
 	.cZ_pan{
