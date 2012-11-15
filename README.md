@@ -1,7 +1,7 @@
 cZoom
 =====
 
-It is a lightweight canvas image zoom plugin with Annotations and Pan
+It is a lightweight JavaScript canvas image zoom plugin with ad Annotations and Pan
 
 
 ### Usage ###
