@@ -1,67 +1,67 @@
-	.cZ_Wrapper{
-		position:relative;
-		margin:0 auto;
-	}
-	.cZ_Wrapper canvas{
-		position:absolute;
-		top:0px;
-		left:0px;
-	}
-	.cZ_toolWrapper{
-		width: 125px;
-		height: 35px;
-		border-radius: 5px;
-		position: absolute;
-		top: 10px;
-		left: 10px;
-		background:#202233;
-		padding:5px;		
-	}
-	.cZ_tool_item{
-		width:30px;
-		height:30px;
-		float:left;
-	}
-	.cZ_zoom{
-		width: 65px;	
-		float: left;
-		background:#04465F;
-		height:100%;
-	}
-	.cZ_zoomIn{
-		background:url(images/zoomin.png) center center no-repeat;
-		height:100%;
-		border-right:1px solid #103949;
-	}
-	.cZ_zoomOut{
-		background:url(images/zoomout.png) center center no-repeat;
-		height:100%;
-	}
-	.cZ_pan{
-		background:#0B546F url(images/pan.png) center center no-repeat;
-		height:100%;		
-	}
-	.cZ_edit{
-		background:#0A4961 url(images/edit.png) center center no-repeat;
-		height:100%;		
-	}
-	.cZ_editWrapper{
-		position:absolute;
-		background:#04465F;
-		padding:3px;
-		border-radius: 5px;
-		display:none;		
-	}
-	.cZ_editWrapper *{
-		float:left;
-	}
-	.cZ_edit_done{
-		width:30px;
-		height:30px;
-		background:#0A4961 url(images/yes.png) center center no-repeat;		
-	}
-	.cZ_edit_cancel{
-		width:30px;
-		height:30px;
-		background:#0A4961 url(images/no.png) center center no-repeat;		
-	}
+.cZ_Wrapper{
+	position:relative;
+	margin:0 auto;
+}
+.cZ_Wrapper canvas{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+.cZ_toolWrapper{
+	width: 125px;
+	height: 35px;
+	border-radius: 5px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background:#202233;
+	padding:5px;		
+}
+.cZ_tool_item{
+	width:30px;
+	height:30px;
+	float:left;
+}
+.cZ_zoom{
+	width: 65px;	
+	float: left;
+	background:#04465F;
+	height:100%;
+}
+.cZ_zoomIn{
+	background:url(images/zoomin.png) center center no-repeat;
+	height:100%;
+	border-right:1px solid #103949;
+}
+.cZ_zoomOut{
+	background:url(images/zoomout.png) center center no-repeat;
+	height:100%;
+}
+.cZ_pan{
+	background:#0B546F url(images/pan.png) center center no-repeat;
+	height:100%;		
+}
+.cZ_edit{
+	background:#0A4961 url(images/edit.png) center center no-repeat;
+	height:100%;		
+}
+.cZ_editWrapper{
+	position:absolute;
+	background:#04465F;
+	padding:3px;
+	border-radius: 5px;
+	display:none;		
+}
+.cZ_editWrapper *{
+	float:left;
+}
+.cZ_edit_done{
+	width:30px;
+	height:30px;
+	background:#0A4961 url(images/yes.png) center center no-repeat;		
+}
+.cZ_edit_cancel{
+	width:30px;
+	height:30px;
+	background:#0A4961 url(images/no.png) center center no-repeat;		
+}
