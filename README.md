@@ -37,6 +37,8 @@ var myZoom = new cZoom("zoomCanvas","imagename.jpg");
 	resetPan();
 ```
 
+### Architecture ###
+
 ```html
 
 ~~~~~~~~~~~~~~#########~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
