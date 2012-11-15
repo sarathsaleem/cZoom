@@ -5,7 +5,7 @@ It is a lightweight canvas image zoom plugin with Annotations and Pan
 
 
 ### Usage ###
-Download the [minified library]() and include it in your html.
+Download the [library](http://sarathsaleem.github.com/cZoom/src/cZoom.js) and include it in your html.
 
 ```html
 <script src="js/cZoom.js"></script>
