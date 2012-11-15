@@ -1,83 +1,26 @@
-/*
+  /*
+     * Copyright (c) 2012 Sarath Saleem
+     *
+     * This software is provided 'as-is', without any express or implied
+     * warranty. In no event will the authors be held liable for any damages
+     * arising from the use of this software.
+     *
+     * Permission is granted to anyone to use this software for any purpose,
+     * including commercial applications, and to alter it and redistribute it
+     * freely, subject to the following restrictions:
+     *
+     *    1. The origin of this software must not be misrepresented; you must not
+     *    claim that you wrote the original software. If you use this software
+     *    in a product, an acknowledgment in the product documentation would be
+     *    appreciated but is not required.
+     *
+     *    2. Altered source versions must be plainly marked as such, and must not
+     *    be misrepresented as being the original software.
+     *
+     *    3. This notice may not be removed or altered from any source
+     *    distribution.
+     */
 
-~~~~~~~~~~~~~~#########~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~###~~~~~~~###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~###~~~~~~~~~###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~###~~~~~~~~~~~~~~~~~~~~@@@@@@@~~~~@@@~~~~~@@@~~~@@~~@@~~~~~~~~
-~~~~~~~~~###~~~~~~~~~~~~~~~~~~~~~~~~~@@~~~~@~~~@~~~@~~~@~~@~@@~@~~~~~~~~
-~~~~~~~~~##~~~~~~~~~~~~~~~~~~~~~~~~@@~~~~~~@~~~@~~~@~~~@~~@~~~~@~~~~~~~~
-~~~~~~~~~##~~~~~~~~~~~~~~~~~~~~~~@@@@@@@~~~~@@@~~~~~@@@~~~@~~~~@~~~~~~~~
-~~~~~~~~~###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~###~~~~~~~~~~~~###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~###~~~~~~~~~~###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~###~~~~~~~~###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~###########~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			
-
-# Change: new name cZoom();
-	initilized with passing the container id.
-	pass image path and container id.
-	
-	@_@ Create tool buttons from app,bind events as both for touch and mouse
-	@_@ resize the canvas to image size
-		---------------
-		Functionalities
-		---------------
-	@_@ Zoom in/out canvas
-	@_@ Draw annotations on canvas(text should not zoom, but shoud retain the position)
-	@_@ Pan canvas
-	
-	
-	Flow description:
-	====================================================================================
-
-	Use can create instance with new cZoom();
-	
-	Plublic methods:
-	~~~~~~~~~~~~~~~~
-	
-	resetAll();
-	destroy();
-	
-	#zoomTo();
-	#getZoom();
-	#resetZoom();
-	
-	#panTo();
-	#getPan();
-	#resetPan();
-	
-	#createAno();
-	#removeAno();
-	#getAnos();	
-		
-	
-	:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:||
-			Architecture / Modules description 		 ||
-	:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:||
-	
-	Reffer iScroll structure but there is no need of adding all the var as public , expose just the public api's.	
-	Use Stict mode: Ys i want it :)
-	
-	___IntApp___ : *Get property of container , keep that as global refference.
-					* Image loading function , keep image data as global.
-						-- f(): load img an give bck the img data
-					*init/Create UI . elements UI module is separate than int tht ui accept image data n container refference.
-					*all helper functions , checks will go in this section
-					___________________________________________________________________________________________________________
-					
-	__UI__		: *Create dom elemts , buttons , css handeling . 
-					*Bind all events , handele touch n mouse binding.
-					____________________________________________________________________________________________________________
-					
-	__Fn___		: *Local copy of all functions including public.
-					*Split as zoom, pan, draw section 
-					* Identify the shared/connection  methods between sessions.
-					* How to handle module__module communicatins ?
-					
-					
-	
-*/
 
 (function(window,doc){
 
