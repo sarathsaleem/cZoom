@@ -22,6 +22,7 @@
      */
 
 
+
 (function(window,doc){
 
 "use strict";
@@ -196,14 +197,14 @@ var modules = {
 				_zoomIn : function(scale){					
 					zoomCtx('in',scale);
 				},
-				_zoomOut : function(){					
-					zoomCtx('out');
+				_zoomOut : function(scale){					
+					zoomCtx('out',scale);
 				},
 				zoomTo: function(scale){
 					zoomCtx('','',scale);
 				},
 				getZoom : function(){
-					return scale;
+					return transformMTR.scaleX;
 				},
 				resetZoom : function(){
 					zoomCtx('','',1);
@@ -224,7 +225,7 @@ var modules = {
 			}
 			
 			//visible in all function module methods
-			redrawAnnotations =  function(T){				
+			redrawAnnotations =  function(T){
 				for(var i=0,len = annotations.length;i<len;i++){					
 					var text = annotations[i].text;
 					var x = annotations[i].x *( T.scaleX || 1) + T.transX;
@@ -281,7 +282,7 @@ var modules = {
 					else{
 						transformMTR.transX = 0;
 						transformMTR.transY = 0;
-					}					
+					}				
 					ctx.save();
 					ctx.clearRect(0, 0, width, height);							
 					ctx.translate(transformMTR.transX ,transformMTR.transY);
@@ -321,10 +322,10 @@ var modules = {
 		var wrapper = UI.wrapper,
 			imgCanvas = UI.imgCanvas,
 			textCanvas = UI.textCanvas;			
-		var fn_zoom = fn.zoom();	
+		
 		var fn_text = fn.text();	
 		var fn_pan = fn.pan();
-		
+		var fn_zoom = fn.zoom();	
 		function noDefault(){
 			e.preventDefault();
 		}		
@@ -367,7 +368,7 @@ var modules = {
 				function setModeZoom(){
 					fn.cZMode = "zoom";
 					fn_text._resetText();
-					fn_pan.resetPan();
+					//maintain the pan value
 				}
 				
 				function zoomInFn(e){
@@ -399,7 +400,7 @@ var modules = {
 				
 				/*Gesturechanges*/
 				
-				function zoomGuester(e){
+				function zoomGesture(e){
 					e.preventDefault();
 					var scale =  e.scale;
 					//i dnt even knw whts this , some optimization calc:Please feel free to optimize the gesture scale values
@@ -416,7 +417,7 @@ var modules = {
 				// gestures to handle pinch
 				imgCanvas.addEventListener('gestureend',gestureEnd , false);
 				// don't let a gesturechange event propagate
-				imgCanvas.addEventListener('gesturechange', zoomGuester, true);
+				imgCanvas.addEventListener('gesturechange', zoomGesture, true);
 							
 				
 			},
@@ -500,7 +501,7 @@ var modules = {
 						canvas.addEventListener(end_EV, endPan, false);	
 					}
 					function resetPanMode(e){
-						fn.cZMode = "";				
+						//fn.cZMode = "";				
 						canvas.removeEventListener(start_EV, startPan, false);
 						canvas.removeEventListener(move_EV, doPan, false);
 						canvas.removeEventListener(end_EV, endPan, false);	
@@ -544,7 +545,6 @@ var cZoom = function(ele,imgsrc,options){
 		*/
 			
 	function initApp(imgData){
-		
 			var new_UI = modules.ui(wrapper,imgData);
 			var new_Fn = modules.fn(new_UI);				
 			var new_Event = modules.events(new_UI,new_Fn);
@@ -556,10 +556,10 @@ var cZoom = function(ele,imgsrc,options){
 			var panMethods = new_Event.pan;
 			
 			//zoom
-			//zoomTo();
+			//setZoom();
 			//getZoom();
 			//resetZoom();	
-			cThis.zoomTo = function(val){
+			cThis.setZoom = function(val){
 				return zoomMethods.zoomTo(val);
 			};
 			cThis.getZoom = function(){				
@@ -583,8 +583,7 @@ var cZoom = function(ele,imgsrc,options){
 			cThis.deleteAnnotation = function(){
 				return textMethods.removeText();
 			};
-			
-			
+						
 			//text
 			//getPan();
 			//setPan();
@@ -598,6 +597,16 @@ var cZoom = function(ele,imgsrc,options){
 			cThis.resetPan = function(){
 				panMethods.resetPan();
 			};
+			
+			//destroy
+			cThis.destroy = function(){
+				
+			};
+			cThis.resetAll = function(){
+				//delete annotations : have to work
+				panMethods.resetPan();
+				zoomMethods.resetZoom();
+			}
 			
 		}		
 	
