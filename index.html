@@ -4,7 +4,9 @@
 <head>
 <meta charset='utf-8'>
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<link rel="stylesheet" type="text/css" href="src/cZoom.css" />
+    <link rel="stylesheet" type="text/css" href="css/practice.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js" ></script>
+	<link rel="stylesheet" type="text/css" href="src/cZoom.css" />
 	<style type="text/css">
 	body{
 		padding:0px;
@@ -40,6 +42,24 @@
 		font-style:italic;
 		color:#fff;
 	}
+	pre{
+		color: #000;
+		font-weight: bold;
+		font-size: 12px;		
+		font-style: italic;
+	}
+	h2{
+		font-size:16px;
+		text-decoration:underline;
+	}
+	h3{
+		font-size:13px;	
+		text-decoration:underline;
+	}
+	.leftWrapper{
+		float:left;
+		width:600px;
+	}
 	.clear{
 		clear:both;
 	}
@@ -57,12 +77,6 @@
 		background: -ms-linear-gradient(top,  #8fb7c4 0%,#0093c4 100%); /* IE10+ */
 		background: linear-gradient(to bottom,  #8fb7c4 0%,#0093c4 100%); /* W3C */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fb7c4', endColorstr='#0093c4',GradientType=0 ); /* IE6-9 */
-	}
-	#zoomCanvas{		
-		width:600px;
-		clear:both;
-		background:#000;
-		border:1px solid #fff;		
 	}	
 	#scale{
 		position:absolute;
@@ -70,8 +84,7 @@
 		right:0px;
 	}
 	#apidoc{
-		width:600px;
-		float:left;		
+		width:600px;		
 		background:#0094C6;
 		color:#fff;
 	}
@@ -83,29 +96,47 @@
 		float:left;
 		padding;
 	}
-	.apicode p{
+	.apicode ul{
+		margin:0px;
+		padding:0px;
+	}
+	.apicode ul li{
 		background:#ccc;
+		list-style:none;
+		margin:5px 0;
+		padding:5px;
+		font-weight: bold;
+	}
+	.apicode ul li b{		
+		padding:5px 0;		
+	}
+	.apicode .api_desc {
+		padding:3px;
+		background:#ddd;
+		font-weight:normal;
+		margin:5px;
+		display:none;
+	}
+	.apicode pre p{
+		color:#0A850A;
+		
+	}
+	.apicode  h4{
+		margin:0px;
+		cursor:pointer;
 	}
 	.democontainer{
 		
 	}
 	.democontainer h2{
 		padding:0 0 0 10px;
-	}
-	pre{
-		color: #000;
-		font-weight: bold;
-		font-size: 12px;		
-		font-style: italic;
-	}
-	h2{
-		font-size:16px;
-		text-decoration:underline;
-	}
-	h3{
-		font-size:13px;	
-		text-decoration:underline;
-	}
+	}	
+	#zoomCanvas{		
+		width:600px;
+		clear:both;
+		background:#000;
+		border:1px solid #fff;		
+	}	
 	</style>
 
 </head>
@@ -117,6 +148,7 @@
 	<header>
 	<h1>cZoom <p>"Just another javascript library"</p></h1>
 	</header>
+	<session class="leftWrapper">
 	<div id="apidoc">
 		<aside>
 			<h2>OVERVIEW</h2>
@@ -130,48 +162,139 @@
 			
 		</aside>
 	</div>
+	<div class="democontainer">
+		<h2> Demo </h2>	
+		<div id="zoomCanvas"></div>
+	</div>
+	</session>
 	<div class="apicode"> 
 	<aside>
 		<h3>API and Option specifications </h3>
-				
-		<p>	setZoom();</p>
-		<p>	getZoom();</p>
-		<p>	resetZoom();</p>
-
-		<p>	getAnnotations();</p>
-		<p>	createAnnotation();</p>
-		<p>	deleteAnnotation();</p>
-
-		<p>	getPan();</p>
-		<p>	setPan();</p>
-		<p>	resetPan();</p>
-		
-		<p>	resetAll(); //have to do</p> 
-		<p>	destroy(); //have to do</p>
-		
-		<p>	{option}//have to do</p>
-	
+		<ul>
+			<li><b>Initilization </b><div class="api_desc" style="display:block">Initilize by library on a div element:<pre>var myZoom = new cZoom(id,imagepath,options);</pre></div></li>
+			<li> <h4> setZoom(); </h4><div class="api_desc">Method which gives option to set the zoom value manualy.
+			<pre><p>
+/*params 
+*
+* type:number
+* accept + or - values including float
+*/ </p>
+myZoom.setZoom(1.5);			
+			</pre></div></li>
+			<li><h4>getZoom();</h4><div class="api_desc">Method which gives option to get the zoom value manualy.
+			<pre><p>
+/*params 
+*
+* type:number
+* accept + or - values including float
+*/ </p>
+var currentZoom = myZoom.getZoom();			
+			</pre></div></li>
+			<li><h4>resetZoom();</h4><div class="api_desc">Method which gives option to reset the zoom value manualy.
+			<pre><p>/*params 
+*
+* no
+*/ </p>
+myZoom.resetZoom();			
+			</pre></div></li>
+			<li><h4>getAnnotations();</h4><div class="api_desc">Method which gives option to get all annotations in the image.Will return an array of Objects
+			<pre><p>
+/*params :no
+*  
+* will return and array of Objects. 
+* Eg: {
+*	text : "your text",
+*	x :10,//x cordinate value
+*	y:15 //y cordinate value
+* }
+*
+*
+*/ </p>
+var annotations = myZoom.getAnnotations();			
+			</pre></div></li>
+			<li><h4>createAnnotation();</h4><div class="api_desc">Method which gives option to create an annotations in the image.Will accept an object as parameter <pre><p>
+/*params : Object
+*  
+* will accept an object with text annotation 
+* properties. 
+* Eg: {
+*	text : "your text",
+*	x :10,//x cordinate value
+*	y:15 //y cordinate value
+* }
+*
+*
+*/ </p>
+ myZoom.createAnnotation( {
+	text : "your text",
+	x :10,//x cordinate value
+	y:15 //y cordinate value
+});			
+			</pre></div></li>
+			<li><h4>deleteAnnotation();</h4><div class="api_desc"> Not implemented <pre><p>
+/*params 
+*  
+* 
+*
+*/ </p>
+ 		</pre></div></li>
+			<li><h4>getPan();</h4><div class="api_desc"> Method which gives option to get curernt pan value , will return an object with x,y transilate positions <pre><p>
+/*params:no
+*  
+* returens an Object
+*{ 
+*	x :300, // x transilate value
+*	y :100 // y transilate value
+*}
+*
+*/</p>
+var panvalue =  myZoom.getPan();
+ 		</pre></div></li>
+			<li><h4>setPan();</h4><div class="api_desc"> Method which gives option to set pan value , will accept an object with x,y transilate positions <pre><p>
+/*params:Object
+*  
+*{ 
+*	x :300, // x transilate value
+*	y :100 // y transilate value
+*}
+*
+*/</p>
+myZoom.setPan({ 
+	x :300, // x transilate value
+	y :100 // y transilate value
+});</pre></div></li>
+			<li>resetPan();<div class="api_desc"> Method which gives option to rest pan value<pre><p>
+/*params:no
+*  
+*
+*/</p>
+myZoom.resetPan();</pre></div></li>			
+			<li>resetAll(); //have to do</li> 
+			<li>destroy(); //have to do</li>			
+			<li>{option}//have to do</li>
+		</ul>
 	</aside>
-	</div>
-	<div class="clear"></div>
-	<div class="democontainer">
-	<h2> Demo </h2>
-	
-	<div id="zoomCanvas"></div>
-	</div>
-	<script src="src/cZoom.js" ></script>
-	<script >
-	var myZoom = new cZoom("zoomCanvas","ipad.jpg");
-	//var myZoom1 = new cZoom("zoomCanvas1","ipad1.jpg");
-
-	</script>
+	</div>	
 	<a href="http://sarathsaleem.github.com/cZoom/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
 	<!-- wrapper -->
 	<div class="clear"></div>
 	<footer ><p>&copy; Sarath Saleem</p></footer>
 </div>
+
+<script src="src/cZoom.js" ></script>
+<script >
+var myZoom = new cZoom("zoomCanvas","ipad.jpg");
+//var myZoom1 = new cZoom("zoomCanvas1","ipad1.jpg");
+</script>
+<script >
+$(document).ready(function(){
+	
+	$(".apicode h4").click(function(){		
+		$(this).next().toggle(300);
+	});
+
+});
+</script>
+
 </body>
 </html>
-
-
