@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-<title> cZoom </title>
+<title>cZoom - JavaScript Image zoom plugin</title>
 <head>
+<meta charset='utf-8'>
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <link rel="stylesheet" type="text/css" href="src/cZoom.css" />
 	<style type="text/css">
@@ -11,24 +12,88 @@
 		font-family: Verdana;
 		font-size: 12px;		
 	}
+	.wrapper{
+		width:1000px;
+		margin:0 auto;
+		border: 1px solid #C5C5C5;
+		background:#D4D4D4;
+	}
+	header{
+		height:120px;
+		background: #45484d; /* Old browsers */
+		background: -moz-linear-gradient(top,  #45484d 0%, #000000 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #45484d 0%,#000000 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #45484d 0%,#000000 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #45484d 0%,#000000 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+	}
+	header h1{
+		color: #00C0FF;
+		font-size: 30px;
+		margin: 0;
+		padding: 16px;
+	}
+	header h1 p{
+		font-size:11px;
+		font-style:italic;
+		color:#fff;
+	}
+	.clear{
+		clear:both;
+	}
+	footer{
+		margin:10px 0 0 0;
+		height:20px;
+		text-align:right;
+		color:#fff;
+		padding:10px;
+		background: #8fb7c4; /* Old browsers */
+		background: -moz-linear-gradient(top,  #8fb7c4 0%, #0093c4 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8fb7c4), color-stop(100%,#0093c4)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #8fb7c4 0%,#0093c4 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #8fb7c4 0%,#0093c4 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #8fb7c4 0%,#0093c4 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #8fb7c4 0%,#0093c4 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fb7c4', endColorstr='#0093c4',GradientType=0 ); /* IE6-9 */
+	}
 	#zoomCanvas{		
-		border:1px solid #ccc;
 		width:600px;
-		float:left;		
-		
+		clear:both;
+		background:#000;
+		border:1px solid #fff;		
 	}	
 	#scale{
 		position:absolute;
 		top:0px;
 		right:0px;
 	}
-	#ApiDoc{
-		width:35%;
-		float:left;
+	#apidoc{
+		width:600px;
+		float:left;		
+		background:#0094C6;
+		color:#fff;
+	}
+	aside{
 		padding:10px;
 	}
+	.apicode{
+		width:400px;
+		float:left;
+		padding;
+	}
+	.apicode p{
+		background:#ccc;
+	}
+	.democontainer{
+		
+	}
+	.democontainer h2{
+		padding:0 0 0 10px;
+	}
 	pre{
-		color: #559700;
+		color: #000;
 		font-weight: bold;
 		font-size: 12px;		
 		font-style: italic;
@@ -48,28 +113,65 @@
 
 <body>
 
+<div class="wrapper">
+	<header>
+	<h1>cZoom <p>"Just another javascript library"</p></h1>
+	</header>
+	<div id="apidoc">
+		<aside>
+			<h2>OVERVIEW</h2>
+			<p>cZoom is a light weight JavaScript library for image maupulation in HTML "canvas" element. It includes zooming, panning and adding annotations. Its compactable with all touch devices like iPad, iPhone, android tablets etc. It has UI buttons as well as the API to do the functionalities.</p>
+			<p> In touch devices gesture event is implemented for zooming using the "gesturechange" event and "scale" properly of the event type gesture. Gesture zooming will not work in the devices which doesn't have the support of "event.scale" in gesture events.
+			<h3>Initilization</h3>
+			<p> Download the <a href="http://sarathsaleem.github.com/cZoom/src/cZoom.js">library</a> and include it in your html.
+			<pre> &lt;script  src="js/cZoom.js"&gt; &lt;script&gt;  </pre>
+			
+			<p> Initilize the app like this <pre>var myZoom = new cZoom("zoomCanvas","image_name.jpg");</pre>So "zoomCanvas" is your id for the div or any other block container element. Its always prefer to give a specific width and height to the container , anyway the "cZ_Wrapper" the class for the main container of the library will have the height and width of the image that you have initialized.</p>
+			
+		</aside>
+	</div>
+	<div class="apicode"> 
+	<aside>
+		<h3>API and Option specifications </h3>
+				
+		<p>	setZoom();</p>
+		<p>	getZoom();</p>
+		<p>	resetZoom();</p>
 
-<div id="ApiDoc">
-<h2>Api Documentaion for CZoom </h2>
+		<p>	getAnnotations();</p>
+		<p>	createAnnotation();</p>
+		<p>	deleteAnnotation();</p>
 
-<h3>Initilization</h3>
-Initilize the app like this
-<pre>
-var myZoom = new cZoom("zoomCanvas","image_name.jpg");
-</pre>
-So "zoomCanvas" is your id for the div
+		<p>	getPan();</p>
+		<p>	setPan();</p>
+		<p>	resetPan();</p>
+		
+		<p>	resetAll(); //have to do</p> 
+		<p>	destroy(); //have to do</p>
+		
+		<p>	{option}//have to do</p>
+	
+	</aside>
+	</div>
+	<div class="clear"></div>
+	<div class="democontainer">
+	<h2> Demo </h2>
+	
+	<div id="zoomCanvas"></div>
+	</div>
+	<script src="src/cZoom.js" ></script>
+	<script >
+	var myZoom = new cZoom("zoomCanvas","ipad.jpg");
+	//var myZoom1 = new cZoom("zoomCanvas1","ipad1.jpg");
+
+	</script>
+	<a href="http://sarathsaleem.github.com/cZoom/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+
+	<!-- wrapper -->
+	<div class="clear"></div>
+	<footer ><p>&copy; Sarath Saleem</p></footer>
 </div>
-
-
-<div id="zoomCanvas"></div>
-
-<script src="src/cZoom.js" ></script>
-
-<script >
-var myZoom = new cZoom("zoomCanvas","ipad.jpg");
-//var myZoom1 = new cZoom("zoomCanvas1","ipad1.jpg");
-
-</script>
-
 </body>
 </html>
+
+
