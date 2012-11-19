@@ -93,31 +93,6 @@ var myZoom = new cZoom("zoomCanvas","imagename.jpg");
 	#getAnos();	
 		
 	
-	:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:||
-			Architecture / Modules description 		 ||
-	:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:||
 	
-	Reffer iScroll structure but there is no need of adding all the var as public , expose just the public api's.	
-	Use Stict mode: Ys i want it :)
-	
-	___IntApp___ : *Get property of container , keep that as global refference.
-					* Image loading function , keep image data as global.
-						-- f(): load img an give bck the img data
-					*init/Create UI . elements UI module is separate than int tht ui accept image data n container refference.
-					*all helper functions , checks will go in this section
-					___________________________________________________________________________________________________________
-					
-	__UI__		: *Create dom elemts , buttons , css handeling . 
-					*Bind all events , handele touch n mouse binding.
-					____________________________________________________________________________________________________________
-					
-	__Fn___		: *Local copy of all functions including public.
-					*Split as zoom, pan, draw section 
-					* Identify the shared/connection  methods between sessions.
-					* How to handle module__module communicatins ?
-					
-					
-	
-*/
 ```
 
