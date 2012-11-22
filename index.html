@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<title>cZoom - JavaScript Image zoom plugin</title>
+<head>
+<meta charset='utf-8'>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js" ></script>
+	<link rel="stylesheet" type="text/css" href="src/cZoom.css" />
+	<style type="text/css">
+	body{
+		padding:0px;
+		margin:0px;
+		font-family: Verdana;
+		font-size: 12px;		
+	}
+	.wrapper{
+		width:1000px;
+		margin:0 auto;
+		border: 1px solid #C5C5C5;
+		background:#D4D4D4;
+	}
+	header{
+		height:120px;
+		background: #45484d; /* Old browsers */
+		background: -moz-linear-gradient(top,  #45484d 0%, #000000 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #45484d 0%,#000000 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #45484d 0%,#000000 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #45484d 0%,#000000 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+	}
+	header h1{
+		color: #00C0FF;
+		font-size: 30px;
+		margin: 0;
+		padding: 16px;
+	}
+	header h1 p{
+		font-size:11px;
+		font-style:italic;
+		color:#fff;
+	}
+	pre{
+		color: #000;
+		font-weight: bold;
+		font-size: 12px;		
+		font-style: italic;
+	}
+	h2{
+		font-size:16px;
+		text-decoration:underline;
+	}
+	h3{
+		font-size:13px;	
+		text-decoration:underline;
+	}
+	.leftWrapper{
+		float:left;
+		width:600px;
+	}
+	.clear{
+		clear:both;
+	}
+	footer{
+		margin:10px 0 0 0;
+		height:20px;
+		text-align:right;
+		color:#fff;
+		padding:10px;
+		background: #8fb7c4; /* Old browsers */
+		background: -moz-linear-gradient(top,  #8fb7c4 0%, #0093c4 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8fb7c4), color-stop(100%,#0093c4)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #8fb7c4 0%,#0093c4 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #8fb7c4 0%,#0093c4 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #8fb7c4 0%,#0093c4 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #8fb7c4 0%,#0093c4 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fb7c4', endColorstr='#0093c4',GradientType=0 ); /* IE6-9 */
+	}	
+	#scale{
+		position:absolute;
+		top:0px;
+		right:0px;
+	}
+	#apidoc{
+		width:600px;		
+		background:#0094C6;
+		color:#fff;
+	}
+	aside{
+		padding:10px;
+	}
+	.apicode{
+		width:400px;
+		float:left;
+		padding;
+	}
+	.apicode ul{
+		margin:0px;
+		padding:0px;
+	}
+	.apicode ul li{
+		background:#ccc;
+		list-style:none;
+		margin:5px 0;
+		padding:5px;
+		font-weight: bold;
+	}
+	.apicode ul li b{		
+		padding:5px 0;		
+	}
+	.apicode .api_desc {
+		padding:3px;
+		background:#ddd;
+		font-weight:normal;
+		margin:5px;
+		display:none;
+	}
+	.apicode pre p{
+		color:#0A850A;
+		
+	}
+	.apicode  h4{
+		margin:0px;
+		cursor:pointer;
+	}
+	.democontainer{
+		
+	}
+	.democontainer h2{
+		padding:0 0 0 10px;
+	}	
+	#zoomCanvas{		
+		width:600px;
+		clear:both;
+		background:#000;
+		border:1px solid #fff;		
+	}	
+	</style>
+
+</head>
+
+
+<body>
+
+<div class="wrapper">
+	<header>
+	<h1>cZoom <p>"Just another javascript library"</p></h1>
+	</header>
+	<session class="leftWrapper">
+	<div id="apidoc">
+		<aside>
+			<h2>OVERVIEW</h2>
+			<p>cZoom is a light weight JavaScript library for image maupulation in HTML "canvas" element. It includes zooming, panning and adding annotations. Its compatible with all touch devices like iPad, iPhone, android tablets etc. It has UI buttons as well as the API to do the functionalities.</p>
+			<p> In touch devices gesture event is implemented for zooming using the "gesturechange" event and "scale" properly of the event type gesture. Gesture zooming will not work in the devices which doesn't have the support of "event.scale" in gesture events.
+			<h3>Initilization</h3>
+			<p> Download the <a href="http://sarathsaleem.github.com/cZoom/src/cZoom.js">library</a> and include it in your html.
+			<pre> &lt;script  src="js/cZoom.js"&gt; &lt;script&gt;  </pre>
+			
+			<p> Initilize the app like this <pre>var myZoom = new cZoom("zoomCanvas","image_name.jpg");</pre>So "zoomCanvas" is your id for the div or any other block container element. Its always prefer to give a specific width and height to the container , anyway the "cZ_Wrapper" the class for the main container of the library will have the height and width of the image that you have initialized.</p>
+			
+		</aside>
+	</div>
+	<div class="democontainer">
+		<h2> Demo </h2>	
+		<div id="zoomCanvas"></div>
+	</div>
+	</session>
+	<div class="apicode"> 
+	<aside>
+		<h3>API and Option specifications </h3>
+		<ul>
+			<li><b>Initilization </b><div class="api_desc" style="display:block">Initilize by library on a div element:<pre>var myZoom = new cZoom(id,imagepath,options);</pre></div></li>
+			<li> <h4> setZoom(); </h4><div class="api_desc">Method which gives option to set the zoom value manualy.
+			<pre><p>
+/*params 
+*
+* type:number
+* accept + or - values including float
+*/ </p>
+myZoom.setZoom(1.5);			
+			</pre></div></li>
+			<li><h4>getZoom();</h4><div class="api_desc">Method which gives option to get the zoom value manualy.
+			<pre><p>
+/*params 
+*
+* type:number
+* accept + or - values including float
+*/ </p>
+var currentZoom = myZoom.getZoom();			
+			</pre></div></li>
+			<li><h4>resetZoom();</h4><div class="api_desc">Method which gives option to reset the zoom value manualy.
+			<pre><p>/*params 
+*
+* no
+*/ </p>
+myZoom.resetZoom();			
+			</pre></div></li>
+			<li><h4>getAnnotations();</h4><div class="api_desc">Method which gives option to get all annotations in the image.Will return an array of Objects
+			<pre><p>
+/*params :no
+*  
+* will return and array of Objects. 
+* Eg: {
+*	text : "your text",
+*	x :10,//x cordinate value
+*	y:15 //y cordinate value
+* }
+*
+*
+*/ </p>
+var annotations = myZoom.getAnnotations();			
+			</pre></div></li>
+			<li><h4>createAnnotation();</h4><div class="api_desc">Method which gives option to create an annotations in the image.Will accept an object as parameter <pre><p>
+/*params : Object
+*  
+* will accept an object with text annotation 
+* properties. 
+* Eg: {
+*	text : "your text",
+*	x :10,//x cordinate value
+*	y:15 //y cordinate value
+* }
+*
+*
+*/ </p>
+ myZoom.createAnnotation( {
+	text : "your text",
+	x :10,//x cordinate value
+	y:15 //y cordinate value
+});			
+			</pre></div></li>
+			<li><h4>deleteAnnotation();</h4><div class="api_desc"> Not implemented <pre><p>
+/*params 
+*  
+* 
+*
+*/ </p>
+ 		</pre></div></li>
+			<li><h4>getPan();</h4><div class="api_desc"> Method which gives option to get curernt pan value , will return an object with x,y transilate positions <pre><p>
+/*params:no
+*  
+* returens an Object
+*{ 
+*	x :300, // x transilate value
+*	y :100 // y transilate value
+*}
+*
+*/</p>
+var panvalue =  myZoom.getPan();
+ 		</pre></div></li>
+			<li><h4>setPan();</h4><div class="api_desc"> Method which gives option to set pan value , will accept an object with x,y transilate positions <pre><p>
+/*params:Object
+*  
+*{ 
+*	x :300, // x transilate value
+*	y :100 // y transilate value
+*}
+*
+*/</p>
+myZoom.setPan({ 
+	x :300, // x transilate value
+	y :100 // y transilate value
+});</pre></div></li>
+			<li><h4>resetPan();</h4><div class="api_desc"> Method which gives option to rest pan value<pre><p>
+/*params:no
+*  
+*
+*/</p>
+myZoom.resetPan();</pre></div></li>			
+			<li>resetAll(); //have to do</li> 
+			<li>destroy(); //have to do</li>			
+			<li>{option}//have to do</li>
+		</ul>
+	</aside>
+	</div>	
+	<a href="https://github.com/sarathsaleem/cZoom"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+	<!-- wrapper -->
+	<div class="clear"></div>
+	<footer ><p>&copy; Sarath Saleem</p></footer>
+</div>
+
+<script src="src/cZoom.js" ></script>
+<script >
+var myZoom = new cZoom("zoomCanvas","ipad.jpg");
+//var myZoom1 = new cZoom("zoomCanvas1","ipad1.jpg");
+</script>
+<script >
+$(document).ready(function(){
+	
+	$(".apicode h4").click(function(){		
+		$(this).next().toggle(300);
+	});
+
+});
+</script>
+
+</body>
+</html>
