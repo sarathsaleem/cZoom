@@ -7,7 +7,6 @@ A light weight JavaScript library for image maupulation in HTML "canvas" element
 
 In touch devices gesture event is implemented for zooming using the "gesturechange" event and "scale" properly of the event type gesture. Gesture zooming will not work in the devices which doesn't have the support of "event.scale" in gesture events.
 
-Initilization
 
 ### Usage ###
 Download the [library](http://sarathsaleem.github.com/cZoom/src/cZoom.js) and include it in your html.
