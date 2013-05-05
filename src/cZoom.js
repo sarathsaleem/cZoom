@@ -417,16 +417,16 @@
                     var zoomInInterval, zoomOutInterval;
 
                     function setModeZoom() {
-                        
+
                         fn_text._resetText();
                         //maintain the pan value
-						
-						fn.cZMode = "zoom";
+
+                        fn.cZMode = "zoom";
                     }
 
                     function resetZoomMode() {
                         canvas.style.cursor = "default";
-                        removeAllEvents(canvas,start_EV);
+                        removeAllEvents(canvas, start_EV);
                     }
 
 
@@ -437,7 +437,7 @@
                         canvas.style.cursor = '-webkit-zoom-in';
                         canvas.style.cursor = 'zoom-in';
 
-                        removeAllEvents(canvas,start_EV);
+                        removeAllEvents(canvas, start_EV);
                         addEvent(canvas, start_EV, zoomInFn, false);
 
                         if (fn.cZMode !== "zoom") {
@@ -456,7 +456,7 @@
                         canvas.style.cursor = '-webkit-zoom-out';
                         canvas.style.cursor = 'zoom-out';
 
-                        removeAllEvents(canvas,start_EV);
+                        removeAllEvents(canvas, start_EV);
                         addEvent(canvas, start_EV, zoomOutFn, false);
 
                         if (fn.cZMode !== "zoom") {
@@ -526,7 +526,7 @@
                             editWrapper.style.top = editPos.y + "px";
                             editWrapper.style.display = "block";
                         } else {
-                           removeAllEvents(canvas,start_EV);
+                            removeAllEvents(canvas, start_EV);
                         }
                     }
 
@@ -535,9 +535,9 @@
                         fn_zoom.resetZoom();
                         fn_pan.resetPan();
                         fn.cZMode = "text";
-						canvas.style.cursor = "default";
-						
-						removeAllEvents(canvas,start_EV);
+                        canvas.style.cursor = "default";
+
+                        removeAllEvents(canvas, start_EV);
                         addEvent(canvas, start_EV, setEditPos, false);
                     }
 
@@ -597,12 +597,12 @@
                     }
 
                     function setPanMode(e) {
-                      
+
                         //remove all events
-						resetPanMode();
-						fn_text._resetText();
-						
-						fn.cZMode = "pan";
+                        resetPanMode();
+                        fn_text._resetText();
+
+                        fn.cZMode = "pan";
 
                         //add pan events
                         addEvent(canvas, start_EV, startPan, false);
@@ -614,9 +614,9 @@
 
                     function resetPanMode() {
                         //fn.cZMode = "";				
-                         removeAllEvents(canvas,start_EV);
-						 removeAllEvents(canvas,move_EV);
-						 removeAllEvents(canvas,end_EV);
+                        removeAllEvents(canvas, start_EV);
+                        removeAllEvents(canvas, move_EV);
+                        removeAllEvents(canvas, end_EV);
 
                         canvas.style.cursor = "default";
                     }
