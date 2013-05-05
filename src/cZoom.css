@@ -6,6 +6,9 @@
 	position:absolute;
 	top:0px;
 	left:0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 .cZ_toolWrapper{
 	width: 125px;
