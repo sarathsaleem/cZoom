@@ -2,6 +2,7 @@ cZoom
 =====
 
 It is a lightweight JavaScript canvas image zoom plugin with Annotations and Pan
+
 [Demo](http://sarathsaleem.github.com/cZoom)
 
 A light weight JavaScript library for image maupulation in HTML "canvas" element. It includes zooming, panning and adding annotations. Its compatible with all touch devices like iPad, iPhone, android tablets etc. It has UI buttons as well as the API to do the functionalities.
